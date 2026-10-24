@@ -70,6 +70,8 @@ def check():
     for path, doc in pages.items():
         label = path.relative_to(ROOT).as_posix()
         for href in doc.links:
+            if href.startswith("/") and not href.startswith("//"):
+                errors.append(label + " : chemin absolu incompatible avec GitHub Pages en sous-dossier : " + href)
             item = destination(path, href)
             if item is None: continue
             target, frag = item
