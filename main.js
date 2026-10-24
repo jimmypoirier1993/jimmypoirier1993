@@ -2,9 +2,11 @@
 const toggle=document.querySelector("#menu-toggle");
 const nav=document.querySelector("#navlinks");
 toggle?.addEventListener("click",()=>{const expanded=toggle.getAttribute("aria-expanded")==="true";toggle.setAttribute("aria-expanded",String(!expanded));toggle.setAttribute("aria-label",expanded?"Ouvrir le menu":"Fermer le menu");nav?.classList.toggle("is-open",!expanded);});
-nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("is-open");toggle?.setAttribute("aria-expanded","false");}));
-document.querySelector("#year").textContent=String(new Date().getFullYear());
-const recipient=""; // TODO: renseigner et vérifier le courriel de réception avant la mise en production.
+function closeNav(){nav?.classList.remove("is-open");toggle?.setAttribute("aria-expanded","false");toggle?.setAttribute("aria-label","Ouvrir le menu");}
+nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeNav));
+document.addEventListener("keydown",event=>{if(event.key==="Escape" && nav?.classList.contains("is-open")){closeNav();toggle?.focus();}});
+document.querySelector("#year")?.replaceChildren(document.createTextNode(String(new Date().getFullYear())));
+const recipient = typeof window.PAIDEIA_CONFIG?.contactEmail === "string" ? window.PAIDEIA_CONFIG.contactEmail.trim() : ""; // À valider avant publication.
 document.querySelector("#contact-form")?.addEventListener("submit",(event)=>{
  event.preventDefault();
  const form=event.currentTarget;
