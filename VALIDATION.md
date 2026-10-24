@@ -1,11 +1,12 @@
 # Validation des PR et déploiement
 
 ## Série de PR empilées
-1. PR #1 : `feat/paideia-v2` → `main`, vitrine de base.
-2. PR #2 : `feat/paideia-pages` → `feat/paideia-v2`, pages de services et ressources.
-3. PR #3 : `chore/paideia-quality-gates` → `feat/paideia-pages`, contrôles et contact.
+1. PR #1 — vitrine de base : fusionnée dans `main` le 24 octobre 2026 (historique GitHub).
+2. PR #2 — pages et ressources : toujours ouverte sur `feat/paideia-v2`, mais le même contenu a été intégré à `main` par la PR #3 ; la PR #2 est potentiellement redondante.
+3. PR #3 — contenu de la branche `feat/paideia-pages` : fusionnée dans `main` le 24 octobre 2026 (historique GitHub).
+4. PR #4 — contrôles et contact : **brouillon, à examiner**, cible `main`.
 
-**Ne pas fusionner sans validation humaine.** Réévaluer les branches cibles après chaque fusion éventuelle.
+**Ne pas fusionner la PR #4 sans validation humaine.** Ce document constate des fusions déjà présentes dans l'historique et ne les a pas déclenchées.
 
 ## Contrôles automatiques
 
