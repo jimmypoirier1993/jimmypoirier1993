@@ -32,3 +32,7 @@ Le site public n'a pas pu être consulté pendant l'audit initial ; ce projet es
 ## Recette et contrôle qualité
 
 Voir `AUDIT.md` et `VALIDATION.md`. Configurer le courriel autorisé dans `site-config.js` avant publication. Les contrôles statiques n’équivalent pas à un audit Lighthouse ni à une certification WCAG.
+
+## Chemins compatibles GitHub Pages
+
+Les liens vers les ressources et les pages internes utilisent des chemins relatifs (`./` à la racine, `../` dans les sous-répertoires). Cela permet de servir les mêmes fichiers depuis `https://<utilisateur>.github.io/<depot>/` et depuis un domaine personnalisé à la racine, sans compilation ni variable de base URL. Le contrôle statique rejette désormais les liens HTML internes commençant par `/`.
