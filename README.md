@@ -28,3 +28,7 @@ HTML sémantique, CSS responsive et JS minimal. Métadonnées OpenGraph, donnée
 ## Limites
 
 Le site public n'a pas pu être consulté pendant l'audit initial ; ce projet est une proposition construite à partir du positionnement général de l'entreprise, **pas** une reproduction ni un audit exhaustif du site existant. Le formulaire doit être configuré avant publication.
+
+## Recette et contrôle qualité
+
+Voir `AUDIT.md` et `VALIDATION.md`. Configurer le courriel autorisé dans `site-config.js` avant publication. Les contrôles statiques n’équivalent pas à un audit Lighthouse ni à une certification WCAG.

@@ -1,0 +1,31 @@
+name: Qualité statique Paideia
+on:
+  pull_request:
+  push:
+    branches:
+      - 'feat/**'
+      - 'chore/**'
+permissions:
+  contents: read
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Valider les pages et les liens
+        run: python scripts/check_site.py
+      - name: Vérifier le JavaScript
+        run: |
+          node --check main.js
+          node --check site-config.js
+      - name: Vérifier les feuilles de style
+        run: |
+          test -s styles.css
+          test -s pages.css
