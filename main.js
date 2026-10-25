@@ -5,6 +5,18 @@ toggle?.addEventListener("click",()=>{const expanded=toggle.getAttribute("aria-e
 function closeNav(){nav?.classList.remove("is-open");toggle?.setAttribute("aria-expanded","false");toggle?.setAttribute("aria-label","Ouvrir le menu");}
 nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeNav));
 document.addEventListener("keydown",event=>{if(event.key==="Escape" && nav?.classList.contains("is-open")){closeNav();toggle?.focus();}});
+// Repère la page ou la rubrique active, y compris dans un sous-dossier GitHub Pages.
+const currentPath=window.location.pathname.replace(/index\.html$/, "");
+nav?.querySelectorAll("a[href]").forEach(link=>{
+ const target=new URL(link.getAttribute("href"),window.location.href);
+ const targetPath=target.pathname.replace(/index\.html$/, "");
+ if(target.hash || target.origin!==window.location.origin)return;
+ if(currentPath===targetPath){
+  link.setAttribute("aria-current","page");
+ }else if(targetPath.endsWith("/") && currentPath.startsWith(targetPath)){
+  link.setAttribute("aria-current","location");
+ }
+});
 document.querySelector("#year")?.replaceChildren(document.createTextNode(String(new Date().getFullYear())));
 const recipient = typeof window.PAIDEIA_CONFIG?.contactEmail === "string" ? window.PAIDEIA_CONFIG.contactEmail.trim() : ""; // À valider avant publication.
 document.querySelector("#contact-form")?.addEventListener("submit",(event)=>{
